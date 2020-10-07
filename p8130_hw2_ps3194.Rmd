@@ -8,13 +8,11 @@ output:
 ---
 ## Problem 1
 
-A new test is being developed for the detection of carcinoma of the prostate (Foti et al. N Engl. J
-Med. 1977). When it is tested in a group of 113 patients with prostatic cancer, 79 have a positive
-diagnosis; in a group of 217 individuals without prostatic cancer, 10 have a positive diagnosis. 
+#### A new test is being developed for the detection of carcinoma of the prostate (Foti et al. N Engl. J Med. 1977). When it is tested in a group of 113 patients with prostatic cancer, 79 have a positive diagnosis; in a group of 217 individuals without prostatic cancer, 10 have a positive diagnosis. 
 
 -----------
 
-### 1) Calculate the specificity and sensitivity of the test. 
+#### 1) Calculate the specificity and sensitivity of the test. 
 
 #### **solution**:
 
@@ -24,7 +22,7 @@ $$ \\ test \ specificity = P(T^{c}/D^{c}) = (207/217) = 0.954 $$
 
 -----------
 
-### 2) In another hypothetical scenario, it is planned to use the test to screen a large sample of subjects for prostatic cancer where the test results will be the only data available. Is this information enough to assess the test characteristics, i.e., sensitivity & specificity? Yes, no, what is missing (if the case)?
+#### 2) In another hypothetical scenario, it is planned to use the test to screen a large sample of subjects for prostatic cancer where the test results will be the only data available. Is this information enough to assess the test characteristics, i.e., sensitivity & specificity? Yes, no, what is missing (if the case)?
 
 #### **solution**:
 
@@ -32,7 +30,7 @@ No, this test will not be enough to provide the test characteristics such as sen
 
 ------------
 
-### 3) In patients with palpable prostatic nodules, the pretest likelihood of prostatic cancer is 50%. The test under these conditions has a sensitivity of 80% and a specificity of 95%. 
+#### 3) In patients with palpable prostatic nodules, the pretest likelihood of prostatic cancer is 50%. The test under these conditions has a sensitivity of 80% and a specificity of 95%. 
 
 #### a) Calculate the probability of a patient with a palpable prostatic nodule and a positive test result having prostatic cancer. What is the epidemiological term of this probability? 
 
@@ -40,6 +38,8 @@ No, this test will not be enough to provide the test characteristics such as sen
 
 By information given, $P(D) = 0.5$ and we want to calculate $P(D/T)$ which has an epidemiological term called Positive Predictive Value(PPV).According to the Bayes'Theorem: 
 $$ \\ P(D/T) = \frac{P(T/D)*P(D)}{P(T)} = \frac{P(T/D)*P(D)}{P(T/D)*P(D)+P(T/D^c)*P(D^c)} = \frac{0.8*0.5}{0.8*0.5+0.2*0.5} = 0.8$$
+
+-------------------------------
 
 #### b) Re-calculate the probability in 3-a), using a pretest likelihood of prostatic cancer of 10%. Compare the two values and comment on their differences.
 
@@ -52,11 +52,11 @@ $$ \\ P(D/T) = \frac{P(T/D)*P(D)}{P(T)} = \frac{P(T/D)*P(D)}{P(T/D)*P(D)+P(T/D^c
 
 ## Problem 2
 
-According to the Center for Disease Control (CDC), about 34.5% of the adult US population are prediabetic (National Diabetes Statistics Report, 2020). Suppose we randomly select a group of 50 patients seen at Columbia University Medical Center.Calculate the following exact probabilities based on the national statistics:
+#### According to the Center for Disease Control (CDC), about 34.5% of the adult US population are prediabetic (National Diabetes Statistics Report, 2020). Suppose we randomly select a group of 50 patients seen at Columbia University Medical Center.Calculate the following exact probabilities based on the national statistics:
 
 --------
 
-### 1) Probability that none of these patients are prediabetic.
+#### 1) Probability that none of these patients are prediabetic.
 
 #### **solution**:
 
@@ -71,7 +71,7 @@ Hence the Probability that none of these patients are prediabetic is `r dbinom(0
 
 --------
 
-### 2) Probability that less than 10 patients are prediabetic.
+#### 2) Probability that less than 10 patients are prediabetic.
 
 #### **solution**:
 
@@ -86,7 +86,7 @@ Hence the Probability that less than 10 patients are prediabetic is `r pbinom(9,
 
 --------
 
-### 3) Probability that 34.5% of these patients are prediabetic (round to the nearest integer). 
+#### 3) Probability that 34.5% of these patients are prediabetic (round to the nearest integer). 
 
 #### **solution**:
 
@@ -97,7 +97,7 @@ dbinom(18, 50, 0.345)
 
 -----------
 
-### 4) Could you use an approximation method to calculate the probabilities above? If yes, calculate the probabilities using approximations and compare to the exact values; otherwise, explain why approximations methods are not appropriate. 
+#### 4) Could you use an approximation method to calculate the probabilities above? If yes, calculate the probabilities using approximations and compare to the exact values; otherwise, explain why approximations methods are not appropriate. 
 
 #### **solution**:
 
@@ -112,11 +112,11 @@ pnorm(18.5, 17.25, 3.3614) - pnorm(17.5, 17.25, 3.3614)
 
 ## Problem 3
 
-The incidence of uveal melanoma in the US is approximately 5 per million individuals per year, with a significantly higher incidence in non-Hispanic Whites (6.02 per million), when compared to Blacks and Asians: 0.31 and 0.39 per million, respectively.
+#### The incidence of uveal melanoma in the US is approximately 5 per million individuals per year, with a significantly higher incidence in non-Hispanic Whites (6.02 per million), when compared to Blacks and Asians: 0.31 and 0.39 per million, respectively.
 
 ---------------
 
-### a) What is the probability that in NYC (population of 8.3 million reported in 2020), exactly 30 cases occur in a given year? 
+#### a) What is the probability that in NYC (population of 8.3 million reported in 2020), exactly 30 cases occur in a given year? 
 
 #### **solution**:
 
@@ -130,7 +130,9 @@ The probability that in NYC, exactly 30 cases occur in a given year is `r dbinom
 
 ----------
 
-### b) Compute the same probability in a) by the mentioned racial/ethnic groups and comment on the findings. Demographic data of NYC in 2020: 14.0% Asians, 42.8% non-Hispanic Whites, 24.3% Black.
+#### b) Compute the same probability in a) by the mentioned racial/ethnic groups and comment on the findings. Demographic data of NYC in 2020: 14.0% Asians, 42.8% non-Hispanic Whites, 24.3% Black.
+
+#### **solution**:
 
 using the same binomial distribution formula
 $$P(X=x) = (^{n}_{x})*p^x*(1-p)^{n-x} $$
@@ -146,10 +148,68 @@ The probability that in NYC, exactly 30 cases occur for Asians is `r dbinom(30, 
 
 ## Problem 4
 
-People with COVID-19 have had a wide range of symptoms, but high temperature is one of the most important indications. Based on current data, the average temperature of patients diagnosed with COVID-19 follow a normal distribution with a mean of 99.9 degrees Fahrenheit and a standard deviation of 0.73 degrees Fahrenheit. Of course, this differs from person to person, based on factors like body weight, height, the weather, age or gender.Let $𝑋_1, … , 𝑋_{40}$ be the body temperatures of 40 randomly chosen individuals returning to the
-Columbia University Medical Center. Calculate the following probabilities:
+#### People with COVID-19 have had a wide range of symptoms, but high temperature is one of the most important indications. Based on current data, the average temperature of patients diagnosed with COVID-19 follow a normal distribution with a mean of 99.9 degrees Fahrenheit and a standard deviation of 0.73 degrees Fahrenheit. Of course, this differs from person to person, based on factors like body weight, height, the weather, age or gender.Let $𝑋_1, … , 𝑋_{40}$ be the body temperatures of 40 randomly chosen individuals returning to the Columbia University Medical Center. Calculate the following probabilities:
 
 
 -----------------
 
+#### 1) $P(\bar{𝑋} < 98)$, the probability that the sample mean is less than 98 (average normal temperature).
 
+#### **solution**:
+
+we need to first calculate the standard deviation of the sample means
+$$ \sigma_{\bar{x}}=\frac{\sigma}{\sqrt{n}} $$
+$$ \sigma_{\bar{x}}=\frac{0.73}{\sqrt{40}} = 0.115423 $$
+$$\mu_{\bar{x}} = \mu = 99.9 $$
+```{r}
+pnorm(98, mean = 99.9,sd = 0.115423)
+```
+
+The probability that the sample mean is less than 98 is `r pnorm(98, mean = 99.9,sd = 0.115423)`
+
+--------
+
+#### 2) $𝑃(\bar{𝑋}> 100.5)$, the probability that the sample mean is greater than 100.5 (alarming zone for COVID-19). 
+
+#### **solution**:
+
+```{r}
+1 - pnorm(100.5, mean = 99.9,sd = 0.115423)
+```
+
+The probability that the sample mean is greater than 100.5 is `r 1 - pnorm(100.5, mean = 99.9,sd = 0.115423)`
+
+-----------------------
+
+#### 3) The 90th quantile of the sampling distribution of the sample mean $\bar{𝑋}$.
+
+#### **solution**:
+
+$$ Z = \frac{\bar{X}-\mu}{\sigma}$$
+
+```{r}
+qnorm(0.9, mean = 99.9, sd = 0.115423)
+z_0.90 = (100.0479 - 99.9)/0.115423
+z_0.90
+```
+The 90th quantile of the sampling distribution of the sample mean $\bar{𝑋}$ is `r qnorm(0.9, mean = 99.9, sd = 0.115423)` with a Z score of `r z_0.90`
+
+---------------------------
+
+#### 4) The cutoff values for the middle 50% of the sampling distribution of the sample mean $\bar{𝑋}$.
+
+#### **solution**:
+
+$$ Z = \frac{\bar{X}-\mu}{\sigma}$$
+$$ Z_{0.75} = \frac{99.97785-99.9}{0.115423} = 0.674$$
+$$ Z_{0.25} = \frac{99.82215-99.9}{0.115423} = -0.674$$
+
+```{r}
+qnorm(0.75, mean = 99.9, sd = 0.115423)
+z_0.75 = (99.97785-99.9)/0.115423
+z_0.75
+qnorm(0.25, mean = 99.9, sd = 0.115423)
+z_0.25 = (99.82215-99.9)/0.115423
+z_0.25
+```
+The cutoff values for the middle 50% of the sampling distribution of the sample mean $\bar{𝑋}$ are  Z_0.75 (`r z_0.75`, x = 99.978) and Z_0.25 (`r z_0.25`, x = 99.822) 
