@@ -108,3 +108,48 @@ $$ P(17.5 \leq X \leq 18.5) $$
 pnorm(18.5, 17.25, 3.3614) - pnorm(17.5, 17.25, 3.3614)
 ```
 
+------------------
+
+## Problem 3
+
+The incidence of uveal melanoma in the US is approximately 5 per million individuals per year, with a significantly higher incidence in non-Hispanic Whites (6.02 per million), when compared to Blacks and Asians: 0.31 and 0.39 per million, respectively.
+
+---------------
+
+### a) What is the probability that in NYC (population of 8.3 million reported in 2020), exactly 30 cases occur in a given year? 
+
+#### **solution**:
+
+$$P(X=30) = (^{8300000}_{30})*(\frac{5}{1000000})^{30}*(1-\frac{5}{1000000})^{8300000-30} = 0.0124 $$
+
+```{r}
+dbinom(30, 8300000, 0.000005) #using binomail
+dpois(30,41.5)  #using poisson
+```
+The probability that in NYC, exactly 30 cases occur in a given year is `r dbinom(30, 8300000, 0.000005)`
+
+----------
+
+### b) Compute the same probability in a) by the mentioned racial/ethnic groups and comment on the findings. Demographic data of NYC in 2020: 14.0% Asians, 42.8% non-Hispanic Whites, 24.3% Black.
+
+using the same binomial distribution formula
+$$P(X=x) = (^{n}_{x})*p^x*(1-p)^{n-x} $$
+
+```{r}
+dbinom(30, 8300000*0.14, (0.39/1000000)) #probability for Asians
+dbinom(30, 8300000*0.243, (0.31/1000000)) #probability for Blacks
+dbinom(30, 8300000*0.428, (6.02/1000000)) #probability for non-Hispanic Whites
+```
+The probability that in NYC, exactly 30 cases occur for Asians is `r dbinom(30, 8300000*0.14, (0.39/1000000))`; the probability for Blacks is `r dbinom(30, 8300000*0.243, (0.31/1000000))` ;and The probability for non-Hispanic Whites is `r dbinom(30, 8300000*0.428, (6.02/1000000))`
+
+-----------------
+
+## Problem 4
+
+People with COVID-19 have had a wide range of symptoms, but high temperature is one of the most important indications. Based on current data, the average temperature of patients diagnosed with COVID-19 follow a normal distribution with a mean of 99.9 degrees Fahrenheit and a standard deviation of 0.73 degrees Fahrenheit. Of course, this differs from person to person, based on factors like body weight, height, the weather, age or gender.Let $𝑋_1, … , 𝑋_{40}$ be the body temperatures of 40 randomly chosen individuals returning to the
+Columbia University Medical Center. Calculate the following probabilities:
+
+
+-----------------
+
+
