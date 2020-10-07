@@ -1,0 +1,57 @@
+---
+title: "p8130_hw2_ps3194"
+author: "Pangsibo Shen"
+date: "10/7/2020"
+output:
+  html_document:
+    toc: TRUE
+---
+## Problem 1
+
+A new test is being developed for the detection of carcinoma of the prostate (Foti et al. N Engl. J
+Med. 1977). When it is tested in a group of 113 patients with prostatic cancer, 79 have a positive
+diagnosis; in a group of 217 individuals without prostatic cancer, 10 have a positive diagnosis. 
+
+-----------
+
+### 1) Calculate the specificity and sensitivity of the test. 
+
+#### **solution**:
+
+$T$ stands for positive diagnosis of prostatic cancer; $D$ stands for having prostatic cancer
+$$ \\ test \ sensitivity = P(T/D) = (79/113) = 0.699 $$
+$$ \\ test \ specificity = P(T^{c}/D^{c}) = (207/217) = 0.954 $$
+
+-----------
+
+### 2) In another hypothetical scenario, it is planned to use the test to screen a large sample of subjects for prostatic cancer where the test results will be the only data available. Is this information enough to assess the test characteristics, i.e., sensitivity & specificity? Yes, no, what is missing (if the case)?
+
+#### **solution**:
+
+No, this test will not be enough to provide the test characteristics such as sensitivity and specificity. We need a gold standard test which can tell us which patients in the sample are truly having the disease. 
+
+------------
+
+### 3) In patients with palpable prostatic nodules, the pretest likelihood of prostatic cancer is 50%. The test under these conditions has a sensitivity of 80% and a specificity of 95%. 
+
+#### a) Calculate the probability of a patient with a palpable prostatic nodule and a positive test result having prostatic cancer. What is the epidemiological term of this probability? 
+
+#### **solution**:
+
+By information given, $P(D) = 0.5$ and we want to calculate $P(D/T)$ which has an epidemiological term called Positive Predictive Value(PPV).According to the Bayes'Theorem: 
+$$ \\ P(D/T) = \frac{P(T/D)*P(D)}{P(T)} = \frac{P(T/D)*P(D)}{P(T/D)*P(D)+P(T/D^c)*P(D^c)} = \frac{0.8*0.5}{0.8*0.5+0.2*0.5} = 0.8$$
+
+#### b) Re-calculate the probability in 3-a), using a pretest likelihood of prostatic cancer of 10%. Compare the two values and comment on their differences.
+
+#### **solution**:
+
+By information given, $P(D) = 0.1$ and we want to calculate $P(D/T)$ According to the Bayes'Theorem: 
+$$ \\ P(D/T) = \frac{P(T/D)*P(D)}{P(T)} = \frac{P(T/D)*P(D)}{P(T/D)*P(D)+P(T/D^c)*P(D^c)} = \frac{0.8*0.1}{0.8*0.1+0.2*0.9} = 0.308$$ In this case, the positive predictive value is significantly smaller than the PPV from 3 a) due to low infection prevalence $P(D)$. In order to have a high positive predictive value, we need to have both high test sensitivity and high infection prevalence. Yet, even if we have a very high test sensitivity, we would still get a poor positive predictive value if the infection prevalence is low.
+
+
+
+
+
+
+
+
