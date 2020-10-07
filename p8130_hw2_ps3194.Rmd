@@ -48,10 +48,63 @@ $$ \\ P(D/T) = \frac{P(T/D)*P(D)}{P(T)} = \frac{P(T/D)*P(D)}{P(T/D)*P(D)+P(T/D^c
 By information given, $P(D) = 0.1$ and we want to calculate $P(D/T)$ According to the Bayes'Theorem: 
 $$ \\ P(D/T) = \frac{P(T/D)*P(D)}{P(T)} = \frac{P(T/D)*P(D)}{P(T/D)*P(D)+P(T/D^c)*P(D^c)} = \frac{0.8*0.1}{0.8*0.1+0.2*0.9} = 0.308$$ In this case, the positive predictive value is significantly smaller than the PPV from 3 a) due to low infection prevalence $P(D)$. In order to have a high positive predictive value, we need to have both high test sensitivity and high infection prevalence. Yet, even if we have a very high test sensitivity, we would still get a poor positive predictive value if the infection prevalence is low.
 
+--------
 
+## Problem 2
 
+According to the Center for Disease Control (CDC), about 34.5% of the adult US population are prediabetic (National Diabetes Statistics Report, 2020). Suppose we randomly select a group of 50 patients seen at Columbia University Medical Center.Calculate the following exact probabilities based on the national statistics:
 
+--------
 
+### 1) Probability that none of these patients are prediabetic.
 
+#### **solution**:
 
+$$P(X=x) = (^{n}_{x})*p^x*(1-p)^{n-x} $$ In this case, we are calculating the probability of X = 0, n = 50 and p = 0.345. 
+
+$$P(X=0) = (^{50}_{0})*0.345^0*(1-0.345)^{50} = 6.48732 *10^{-10} $$
+
+```{r}
+dbinom(0, 50, 0.345)
+```
+Hence the Probability that none of these patients are prediabetic is `r dbinom(0, 50, 0.345)`.
+
+--------
+
+### 2) Probability that less than 10 patients are prediabetic.
+
+#### **solution**:
+
+$$P(X=x) = (^{n}_{x})*p^x*(1-p)^{n-x} $$ In this case, we have X < 10, n = 50 and p = 0.345. 
+
+$$P(X<10) = \sum_{x=0}^9 (^{50}_{x})*0.345^{x}*(1-0.345)^{50-x} =  0.00815 $$
+
+```{r}
+pbinom(9,size = 50, prob = 0.345)
+```
+Hence the Probability that less than 10 patients are prediabetic is `r pbinom(9,size = 50, prob = 0.345)`.
+
+--------
+
+### 3) Probability that 34.5% of these patients are prediabetic (round to the nearest integer). 
+
+#### **solution**:
+
+```{r}
+dbinom(18, 50, 0.345)
+```
+34.5% of 50 patients are 17.25. I rounded it to 18. The Probability that 34.5% of these patients are prediabetic is `r dbinom(17, 50, 0.345)`
+
+-----------
+
+### 4) Could you use an approximation method to calculate the probabilities above? If yes, calculate the probabilities using approximations and compare to the exact values; otherwise, explain why approximations methods are not appropriate. 
+
+#### **solution**:
+
+We can use normal distribution to approximate binomial when $np \geq 10$. In this case, $np = 17.25$ which is greater than 10. We are approximating discrete probability using continuous distribution. A continuity correction should apply. 
+$$ P(17.5 \leq X \leq 18.5) $$
+
+```{r}
+pnorm(18.5, 17.25, 3.3614) - pnorm(17.5, 17.25, 3.3614)
+```
 
