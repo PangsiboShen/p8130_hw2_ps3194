@@ -430,6 +430,7 @@ summary {
 </div>
 <div id="solution-4" class="section level4">
 <h4><strong>solution</strong>:</h4>
+<p>We can use binomial distribution to calculate the probability for this question.</p>
 <p><span class="math display">\[P(X=x) = (^{n}_{x})*p^x*(1-p)^{n-x} \]</span> In this case, we are calculating the probability of X = 0, n = 50 and p = 0.345.</p>
 <p><span class="math display">\[P(X=0) = (^{50}_{0})*0.345^0*(1-0.345)^{50} = 6.48732 *10^{-10} \]</span></p>
 <pre class="r"><code>dbinom(0, 50, 0.345)</code></pre>
@@ -456,7 +457,7 @@ summary {
 <h4><strong>solution</strong>:</h4>
 <pre class="r"><code>dbinom(18, 50, 0.345)</code></pre>
 <pre><code>## [1] 0.1140322</code></pre>
-<p>34.5% of 50 patients are 17.25. I rounded it to 18. The Probability that 34.5% of these patients are prediabetic is 0.1180887</p>
+<p>34.5% of 50 patients are 17.25. I rounded it up to 18. The Probability that 34.5% of these patients are prediabetic is 0.1140322</p>
 <hr />
 </div>
 <div id="could-you-use-an-approximation-method-to-calculate-the-probabilities-above-if-yes-calculate-the-probabilities-using-approximations-and-compare-to-the-exact-values-otherwise-explain-why-approximations-methods-are-not-appropriate." class="section level4">
@@ -464,9 +465,18 @@ summary {
 </div>
 <div id="solution-7" class="section level4">
 <h4><strong>solution</strong>:</h4>
-<p>We can use normal distribution to approximate binomial when <span class="math inline">\(np \geq 10\)</span>. In this case, <span class="math inline">\(np = 17.25\)</span> which is greater than 10. We are approximating discrete probability using continuous distribution. A continuity correction should apply. <span class="math display">\[ P(17.5 \leq X \leq 18.5) \]</span></p>
+<p>We can use normal distribution to approximate binomial when <span class="math inline">\(np \geq 10\)</span>. In this case, <span class="math inline">\(np = 17.25\)</span> which is greater than 10. We are approximating discrete probability using continuous distribution. A continuity correction should apply.The mean of normal distribution will be <span class="math inline">\(n*p = 50*0.345 = 17.25\)</span> and the standard deviation will be <span class="math inline">\(\sqrt{n*p*(1-p)} = \sqrt{50*0.345*0.655} = 3.3614\)</span> <span class="math display">\[ P(17.5 \leq X \leq 18.5) \]</span></p>
 <pre class="r"><code>pnorm(18.5, 17.25, 3.3614) - pnorm(17.5, 17.25, 3.3614)</code></pre>
 <pre><code>## [1] 0.1153612</code></pre>
+<p>When use normal distribution to approximate binomial, the Probability that 34.5% of these patients are prediabetic is 0.1153612</p>
+<p><span class="math display">\[ P(0 &lt; X &lt; 9) \]</span></p>
+<pre class="r"><code>pnorm(9, 17.25, 3.3614) - pnorm(0, 17.25, 3.3614)</code></pre>
+<pre><code>## [1] 0.007057137</code></pre>
+<p>When use normal distribution to approximate binomial, the Probability that less than 10 patients are prediabetic is 0.0059474</p>
+<p><span class="math display">\[ P(-0.5 &lt; X &lt; 0.5) \]</span></p>
+<pre class="r"><code>pnorm(0.5, 17.25, 3.3614) - pnorm(-0.5, 17.25, 3.3614)</code></pre>
+<pre><code>## [1] 2.485579e-07</code></pre>
+<p>When use normal distribution to approximate binomial,the Probability that none of these patients are prediabetic is 2.485579310^{-7}.</p>
 <hr />
 </div>
 </div>
@@ -481,6 +491,7 @@ summary {
 </div>
 <div id="solution-8" class="section level4">
 <h4><strong>solution</strong>:</h4>
+<p>We can use binomial distribution to calculate probability for this question.</p>
 <p><span class="math display">\[P(X=30) = (^{8300000}_{30})*(\frac{5}{1000000})^{30}*(1-\frac{5}{1000000})^{8300000-30} = 0.0124 \]</span></p>
 <pre class="r"><code>dbinom(30, 8300000, 0.000005) #using binomail</code></pre>
 <pre><code>## [1] 0.01243252</code></pre>
@@ -501,7 +512,7 @@ summary {
 <pre><code>## [1] 1.53495e-39</code></pre>
 <pre class="r"><code>dbinom(30, 8300000*0.428, (6.02/1000000)) #probability for non-Hispanic Whites</code></pre>
 <pre><code>## [1] 0.01557061</code></pre>
-<p>The probability that in NYC, exactly 30 cases occur for Asians is 1.168129210^{-43}; the probability for Blacks is 1.534949910^{-39} ;and The probability for non-Hispanic Whites is 0.0155706</p>
+<p>The probability that in NYC, exactly 30 cases occur for Asians is 1.168129210^{-43}; the probability for Blacks is 1.534949910^{-39} ;and The probability for non-Hispanic Whites is 0.0155706. From the results, we notice that non-Hispanic Whites have the highest probability to have uveal melanoma due to their significantly high incidence rate (6.02 per million) and high proportion living in NYC(42.8%). The other two groups have relatively low probability, because they have relatively low disease incidence rate(0.31 and 0.39 per million) and low proportion living in NYV(24.3% and 14%).</p>
 <hr />
 </div>
 </div>
@@ -516,7 +527,7 @@ summary {
 </div>
 <div id="solution-10" class="section level4">
 <h4><strong>solution</strong>:</h4>
-<p>we need to first calculate the standard deviation of the sample means <span class="math display">\[ \sigma_{\bar{x}}=\frac{\sigma}{\sqrt{n}} \]</span> <span class="math display">\[ \sigma_{\bar{x}}=\frac{0.73}{\sqrt{40}} = 0.115423 \]</span> <span class="math display">\[\mu_{\bar{x}} = \mu = 99.9 \]</span></p>
+<p>Since the population has a normal distribution, according to the central limit theorem, our sample distribution will have a normal distribution and we can use it to calculate probability. we need to first calculate the standard deviation of the sample means. <span class="math display">\[ \sigma_{\bar{x}}=\frac{\sigma}{\sqrt{n}} \]</span> <span class="math display">\[ \sigma_{\bar{x}}=\frac{0.73}{\sqrt{40}} = 0.115423 \]</span> <span class="math display">\[\mu_{\bar{x}} = \mu = 99.9 \]</span></p>
 <pre class="r"><code>pnorm(98, mean = 99.9,sd = 0.115423)</code></pre>
 <pre><code>## [1] 3.485781e-61</code></pre>
 <p>The probability that the sample mean is less than 98 is 3.485780610^{-61}</p>
@@ -527,6 +538,7 @@ summary {
 </div>
 <div id="solution-11" class="section level4">
 <h4><strong>solution</strong>:</h4>
+<p>Since the population has a normal distribution, according to the central limit theorem, our sample distribution will have a normal distribution and we can use it to calculate probability. Obtain sample mean and standard deviation from part 1.</p>
 <pre class="r"><code>1 - pnorm(100.5, mean = 99.9,sd = 0.115423)</code></pre>
 <pre><code>## [1] 1.005755e-07</code></pre>
 <p>The probability that the sample mean is greater than 100.5 is 1.005755210^{-7}</p>
@@ -537,6 +549,7 @@ summary {
 </div>
 <div id="solution-12" class="section level4">
 <h4><strong>solution</strong>:</h4>
+<p>Since the population has a normal distribution, according to the central limit theorem, our sample distribution will have a normal distribution and we can use it to calculate probability. Obtain sample mean and standard deviation from part 1.</p>
 <p><span class="math display">\[ Z = \frac{\bar{X}-\mu}{\sigma}\]</span></p>
 <pre class="r"><code>qnorm(0.9, mean = 99.9, sd = 0.115423)</code></pre>
 <pre><code>## [1] 100.0479</code></pre>
@@ -551,6 +564,7 @@ z_0.90</code></pre>
 </div>
 <div id="solution-13" class="section level4">
 <h4><strong>solution</strong>:</h4>
+<p>Since the population has a normal distribution, according to the central limit theorem, our sample distribution will have a normal distribution and we can use it to calculate probability. Obtain sample mean and standard deviation from part 1.</p>
 <p><span class="math display">\[ Z = \frac{\bar{X}-\mu}{\sigma}\]</span> <span class="math display">\[ Z_{0.75} = \frac{99.97785-99.9}{0.115423} = 0.674\]</span> <span class="math display">\[ Z_{0.25} = \frac{99.82215-99.9}{0.115423} = -0.674\]</span></p>
 <pre class="r"><code>qnorm(0.75, mean = 99.9, sd = 0.115423)</code></pre>
 <pre><code>## [1] 99.97785</code></pre>
@@ -562,7 +576,7 @@ z_0.75</code></pre>
 <pre class="r"><code>z_0.25 = (99.82215-99.9)/0.115423
 z_0.25</code></pre>
 <pre><code>## [1] -0.6744756</code></pre>
-<p>The cutoff values for the middle 50% of the sampling distribution of the sample mean <span class="math inline">\(\bar{𝑋}\)</span> are Z_0.75 (0.6744756, x = 99.978) and Z_0.25 (-0.6744756, x = 99.822)</p>
+<p>The cutoff values for the middle 50% of the sampling distribution of the sample mean <span class="math inline">\(\bar{𝑋}\)</span> are Z_0.75 (0.6744756, x = 99.978) and Z_0.25 (-0.6744756, x = 99.822).</p>
 </div>
 </div>
 
